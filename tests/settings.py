@@ -121,6 +121,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+DJANGO_IPAM_IPADDRESS_MODEL = 'openwisp_ipam.IpAddress'
+DJANGO_IPAM_SUBNET_MODEL = 'openwisp_ipam.Subnet'
+
 if os.environ.get('SAMPLE_APP', False):
     INSTALLED_APPS.append('sample_ipam')
     DJANGO_IPAM_IPADDRESS_MODEL = 'sample_ipam.IpAddress'
