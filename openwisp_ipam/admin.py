@@ -11,4 +11,4 @@ class IPAddressAdmin(AbstractIpAddressAdmin):
 
 @admin.register(Subnet)
 class BaseSubnet(AbstractSubnetAdmin):
-    pass
+    app_name = 'openwisp_ipam'

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.admin',
 ]
 
+EXTENDED_APPS = ['django_ipam']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,12 +55,23 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'urls'
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'openwisp_utils.staticfiles.DependencyFinder',
+]
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        'APP_DIRS': True,
         'OPTIONS': {
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'openwisp_utils.loaders.DependencyLoader',
+            ],
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -123,8 +136,3 @@ STATIC_URL = '/static/'
 
 DJANGO_IPAM_IPADDRESS_MODEL = 'openwisp_ipam.IpAddress'
 DJANGO_IPAM_SUBNET_MODEL = 'openwisp_ipam.Subnet'
-
-if os.environ.get('SAMPLE_APP', False):
-    INSTALLED_APPS.append('sample_ipam')
-    DJANGO_IPAM_IPADDRESS_MODEL = 'sample_ipam.IpAddress'
-    DJANGO_IPAM_SUBNET_MODEL = 'sample_ipam.Subnet'
