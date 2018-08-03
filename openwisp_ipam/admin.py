@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from django_ipam.base.admin import AbstractIpAddressAdmin, AbstractSubnetAdmin
+
 from .models import IpAddress, Subnet
 
 
