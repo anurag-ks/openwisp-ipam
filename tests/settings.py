@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'openwisp_utils.admin_theme',
     'openwisp_ipam',
     'django.contrib.admin',
+    'rest_framework',
 ]
 
 EXTENDED_APPS = ['django_ipam']
