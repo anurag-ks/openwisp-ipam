@@ -1,8 +1,7 @@
 import os
 
+from openwisp_ipam import get_version
 from setuptools import find_packages, setup
-
-from django_ipam import get_version
 
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     README = readme.read()
@@ -14,7 +13,7 @@ def get_install_requires():
     """
     requirements = []
     for line in open('requirements.txt').readlines():
-        if line.startswith('#') or line == '' or line.startswith('http') or line.startswith('git'):
+        if line.startswith('#') or line == '' or line.startswith('git'):
             continue
         requirements.append(line)
     return requirements
